@@ -1,25 +1,45 @@
+"use client";
 import Image from "next/image";
-export default function ProductCard({ product }: any) {
-  console.log(product);
-  const { title, image, price } = product;
+
+async function getProduct(id: number) {
+  try {
+    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+    return await res.json();
+  } catch (err) {
+    console.error(err);
+  }
+}
+export default function ProductCard({ product, setList }: any) {
+  const { title, image, price, id } = product;
+
+  async function buyProduct() {
+    const product = await getProduct(id);
+    setList((pv: any) => [...pv, product]);
+  }
+
   return (
     <>
       <div className="min-w-[300px] max-w-[300px] min-h-[300px] border rounded p-4 flex flex-col justify-between">
-        <div className=" relative h-[200px]">
-          <Image
-            className="object-contain w-full h-full  m-auto"
-            src={image}
-            alt="product"
-            fill
-            sizes="(max-width: 768px) 100vw,
+        <div>
+          <div className="relative h-[200px]">
+            <Image
+              className="object-contain w-full h-full  m-auto"
+              src={image}
+              alt="product"
+              fill
+              sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
-          />
+            />
+          </div>
+          <h2 className="text-sm mt-2">{title}</h2>
         </div>
-        <h2 className="text-sm">{title}</h2>
-        <h3 className="text-md text-slate-900 my-4">{price}$</h3>
-        <div className="">
-          <button className="border rounded w-full hover:bg-blue-300">
+        <div className="mt-2">
+          <h3 className="text-lg text-slate-900 my-4">{price}$</h3>
+          <button
+            className="border rounded w-full hover:bg-blue-300"
+            onClick={buyProduct}
+          >
             buy
           </button>
         </div>
