@@ -10,7 +10,7 @@ export default function Header() {
           </h1>
           <ul className="flex text-white">
             <li>
-              <Link className="mr-4" href={"/"}>
+              <Link className="mr-4" href={"/products"}>
                 Products
               </Link>
             </li>

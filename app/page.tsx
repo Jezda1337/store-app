@@ -1,11 +1,7 @@
-import Products from "../components/Products";
-
 function HomePage() {
   return (
     <>
-      <div>
-        <Products />
-      </div>
+      <h1>Hello from HomePage</h1>
     </>
   );
 }

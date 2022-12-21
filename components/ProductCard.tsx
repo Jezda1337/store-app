@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 
 async function getProduct(id: number) {
   try {
@@ -9,12 +10,12 @@ async function getProduct(id: number) {
     console.error(err);
   }
 }
-export default function ProductCard({ product, setList }: any) {
+export default function ProductCard({ product, setCartItems }: any) {
   const { title, image, price, id } = product;
 
   async function buyProduct() {
     const product = await getProduct(id);
-    setList((pv: any) => [...pv, product]);
+    setCartItems((pv: any) => [...pv, product]);
   }
 
   return (
@@ -32,7 +33,9 @@ export default function ProductCard({ product, setList }: any) {
               33vw"
             />
           </div>
-          <h2 className="text-sm mt-2">{title}</h2>
+          <Link href={`/products/${id}`}>
+            <h2 className="text-sm mt-2">{title}</h2>
+          </Link>
         </div>
         <div className="mt-2">
           <h3 className="text-lg text-slate-900 my-4">{price}$</h3>
