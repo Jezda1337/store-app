@@ -10,12 +10,13 @@ async function getProduct(id: number) {
     console.error(err);
   }
 }
-export default function ProductCard({ product, setCartItems }: any) {
+export default function ProductCard({ product, setCartItems, setAdded }: any) {
   const { title, image, price, id } = product;
 
   async function buyProduct() {
     const product = await getProduct(id);
     setCartItems((pv: any) => [...pv, product]);
+    setAdded(true);
   }
 
   return (
