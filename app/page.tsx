@@ -1,8 +1,9 @@
 function HomePage() {
   return (
     <>
-      <h1>Hello from HomePage</h1>
-      <h1>Hello from Home Page</h1>
+      <div className="max-w-5xl mx-auto">
+        <h1>Demo store-app</h1>
+      </div>
     </>
   );
 }

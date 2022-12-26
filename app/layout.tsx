@@ -1,7 +1,11 @@
 import Header from "../components/Header";
-import "./globals.css"; // global css settings and tailwind
+import "tailwindcss/tailwind.css";
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <head>

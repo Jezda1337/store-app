@@ -1,7 +1,7 @@
 "use client";
 
 export default function Snackbar({ isAdded }: { isAdded: boolean }) {
-  console.log(isAdded);
+  console.log("test");
   return (
     <>
       <h1
